@@ -34,6 +34,9 @@ public class Barang implements Serializable{
     @Column(name = "jenisBarang", length = 5)
     private JenisBarang jenisBarang;
 
+    @Column(name = "jumlahBarang")
+    private Integer jumlahBarang;
+
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     @Column(name = "tanggalKadaluarsa")
@@ -80,5 +83,13 @@ public class Barang implements Serializable{
 
     public void setPembelians(List<Pembelian> pembelians) {
         this.pembelians = pembelians;
+    }
+
+    public Integer getJumlahBarang() {
+        return jumlahBarang;
+    }
+
+    public void setJumlahBarang(Integer jumlahBarang) {
+        this.jumlahBarang = jumlahBarang;
     }
 }
