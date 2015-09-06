@@ -49,6 +49,11 @@ public class Pembelian implements Serializable{
     @JoinColumn(name = "idCustomer")
     private Customer customer;
 
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "idBarang")
+    private Barang barang;
+
     public String getIdPembelian() {
         return idPembelian;
     }
@@ -103,5 +108,13 @@ public class Pembelian implements Serializable{
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Barang getBarang() {
+        return barang;
+    }
+
+    public void setBarang(Barang barang) {
+        this.barang = barang;
     }
 }
