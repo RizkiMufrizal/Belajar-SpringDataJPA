@@ -34,6 +34,17 @@ public class BarangServiceImpl implements BarangService{
 
     @Transactional
     @Override
+    public void updateJumlahBarang(String idBarang, Integer jumlahBarang) {
+        Barang barang = barangRepository.findOne(idBarang);
+
+        if(barang != null){
+            barang.setJumlahBarang(barang.getJumlahBarang() - jumlahBarang);
+            barangRepository.save(barang);
+        }
+    }
+
+    @Transactional
+    @Override
     public void deleteBarang(String idBarang) {
         barangRepository.delete(idBarang);
     }
