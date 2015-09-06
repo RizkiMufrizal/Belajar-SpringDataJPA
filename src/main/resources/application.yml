@@ -15,3 +15,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  view:
+    prefix: /app/views/
+    suffix: .html
