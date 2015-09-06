@@ -1,6 +1,10 @@
 package com.rizki.mufrizal.belajarSpringDataJPA.service.impl;
 
+import com.rizki.mufrizal.belajarSpringDataJPA.domain.Barang;
+import com.rizki.mufrizal.belajarSpringDataJPA.domain.Customer;
 import com.rizki.mufrizal.belajarSpringDataJPA.domain.Pembelian;
+import com.rizki.mufrizal.belajarSpringDataJPA.repository.BarangRepository;
+import com.rizki.mufrizal.belajarSpringDataJPA.repository.CustomerRepository;
 import com.rizki.mufrizal.belajarSpringDataJPA.repository.PembelianRepository;
 import com.rizki.mufrizal.belajarSpringDataJPA.service.PembelianService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +19,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class PembelianServiceImpl implements PembelianService{
+public class PembelianServiceImpl implements PembelianService {
 
     @Autowired
     private PembelianRepository pembelianRepository;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private BarangRepository barangRepository;
+
     @Transactional
     @Override
-    public void savePembelian(Pembelian pembelian) {
+    public void savePembelian(Pembelian pembelian, String idCustomer, String idBarang) {
+
+        Customer customer = customerRepository.findOne(idCustomer);
+        Barang barang = barangRepository.findOne(idBarang);
+
+        pembelian.setCustomer(customer);
+        pembelian.setBarang(barang);
+
         pembelianRepository.save(pembelian);
     }
 
@@ -39,6 +56,6 @@ public class PembelianServiceImpl implements PembelianService{
 
     @Override
     public Page<Pembelian> findAllPembelian(Integer page, Integer jumlah) {
-        return pembelianRepository.findAll(new PageRequest(page, jumlah));
+        return pembelianRepository.findAll(new PageRequest(page - 1, jumlah));
     }
 }
