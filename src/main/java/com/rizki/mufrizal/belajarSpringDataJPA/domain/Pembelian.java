@@ -27,14 +27,8 @@ public class Pembelian implements Serializable{
     @Column(name = "idPembelian", length = 150)
     private String idPembelian;
 
-    @Column(name = "namaBarang", length = 50)
-    private String namaBarang;
-
     @Column(name = "jumlahBarang")
     private Integer jumlahBarang;
-
-    @Column(name = "hargaBarang")
-    private BigDecimal hargaBarang;
 
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
@@ -62,28 +56,12 @@ public class Pembelian implements Serializable{
         this.idPembelian = idPembelian;
     }
 
-    public String getNamaBarang() {
-        return namaBarang;
-    }
-
-    public void setNamaBarang(String namaBarang) {
-        this.namaBarang = namaBarang;
-    }
-
     public Integer getJumlahBarang() {
         return jumlahBarang;
     }
 
     public void setJumlahBarang(Integer jumlahBarang) {
         this.jumlahBarang = jumlahBarang;
-    }
-
-    public BigDecimal getHargaBarang() {
-        return hargaBarang;
-    }
-
-    public void setHargaBarang(BigDecimal hargaBarang) {
-        this.hargaBarang = hargaBarang;
     }
 
     public Date getTanggalPembelian() {
