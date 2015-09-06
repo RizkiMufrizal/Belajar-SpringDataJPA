@@ -45,6 +45,6 @@ public class BarangServiceImpl implements BarangService{
 
     @Override
     public Page<Barang> findAllBarang(Integer page, Integer jumlah) {
-        return barangRepository.findAll(new PageRequest(page, jumlah));
+        return barangRepository.findAll(new PageRequest(page - 1, jumlah));
     }
 }
