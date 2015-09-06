@@ -42,7 +42,7 @@ local.properties
 .texlipse
 ### Yeoman template
 node_modules/
-bower_components/
+src/main/webapp/bower_components/
 *.log
 
 build/
