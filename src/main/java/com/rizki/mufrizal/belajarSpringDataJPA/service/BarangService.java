@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 public interface BarangService {
     void saveBarang(Barang barang);
     void updateBarang(Barang barang);
+    void updateJumlahBarang(String idBarang, Integer jumlahBarang);
     void deleteBarang(String idBarang);
     Barang getBarang(String idBarang);
     Page<Barang> findAllBarang(Integer page, Integer jumlah);
