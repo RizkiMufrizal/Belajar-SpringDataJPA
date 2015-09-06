@@ -38,8 +38,8 @@ public class Customer implements Serializable {
     @Column(name = "jenisKelamin", length = 6)
     private JenisKelamin jenisKelamin;
 
-    @ElementCollection(targetClass = String.class)
-    private List<String> emails;
+    @Column(name = "email", length = 45)
+    private String email;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "customer")
     private List<Pembelian> pembelians = new ArrayList<>();
@@ -84,12 +84,12 @@ public class Customer implements Serializable {
         this.jenisKelamin = jenisKelamin;
     }
 
-    public List<String> getEmails() {
-        return emails;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmails(List<String> emails) {
-        this.emails = emails;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Pembelian> getPembelians() {
