@@ -1,6 +1,7 @@
 package com.rizki.mufrizal.belajarSpringDataJPA.controller;
 
 import com.rizki.mufrizal.belajarSpringDataJPA.domain.Pembelian;
+import com.rizki.mufrizal.belajarSpringDataJPA.service.BarangService;
 import com.rizki.mufrizal.belajarSpringDataJPA.service.PembelianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,9 @@ public class PembelianController {
 
     @Autowired
     private PembelianService pembelianService;
+
+    @Autowired
+    private BarangService barangService;
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/pembelian", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -50,6 +54,7 @@ public class PembelianController {
             return objectHashMap;
         } else {
             pembelianService.savePembelian(pembelian, idCustomer, idBarang);
+            barangService.updateJumlahBarang(idBarang, pembelian.getJumlahBarang());
         }
 
         objectHashMap.put("Success", Boolean.TRUE);
