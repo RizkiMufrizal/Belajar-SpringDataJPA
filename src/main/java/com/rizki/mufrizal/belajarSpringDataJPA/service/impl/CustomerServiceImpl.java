@@ -20,6 +20,23 @@ public class CustomerServiceImpl implements CustomerService{
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Transactional
+    @Override
+    public void saveCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
+
+    @Transactional
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer getCustomer(String idCustomer) {
+        return customerRepository.findOne(idCustomer);
+    }
+
     @Override
     public Page<Customer> findAllCustomer(Integer page, Integer jumlah) {
         return customerRepository.findAll(new PageRequest(page - 1, jumlah));
