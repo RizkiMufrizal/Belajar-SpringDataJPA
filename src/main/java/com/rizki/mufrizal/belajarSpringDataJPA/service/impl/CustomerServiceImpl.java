@@ -38,6 +38,11 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Customer findCustomerByEmail(String email) {
+        return customerRepository.findCustomerByEmail(email);
+    }
+
+    @Override
     public Page<Customer> findAllCustomer(Integer page, Integer jumlah) {
         return customerRepository.findAll(new PageRequest(page - 1, jumlah));
     }
