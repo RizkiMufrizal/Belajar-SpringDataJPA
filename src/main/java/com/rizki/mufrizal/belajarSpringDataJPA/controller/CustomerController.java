@@ -35,6 +35,27 @@ public class CustomerController {
         return customerService.getCustomer(idCustomer);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/customer/email/{email:.+}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String, Object> findCustomerByEmail(@PathVariable("email") String email) {
+
+        Customer customer = customerService.findCustomerByEmail(email);
+        HashMap<String, Object> objectHashMap = new HashMap<>();
+
+        if(customer == null){
+            objectHashMap.put("Success", Boolean.FALSE);
+            objectHashMap.put("Info", "Not Found");
+            objectHashMap.put("customer", null);
+            return objectHashMap;
+        }
+
+        objectHashMap.put("Success", Boolean.TRUE);
+        objectHashMap.put("Info", "Found");
+        objectHashMap.put("customer", customer);
+
+        return objectHashMap;
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/customer", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
     public HashMap<String, Object> saveCustomer(@RequestBody Customer customer) {
