@@ -46,7 +46,7 @@ public class BarangServiceImpl implements BarangService{
     @Transactional
     @Override
     public void deleteBarang(String idBarang) {
-        barangRepository.delete(idBarang);
+        barangRepository.deleteBarang(idBarang);
     }
 
     @Override

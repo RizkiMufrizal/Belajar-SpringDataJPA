@@ -46,7 +46,8 @@ public class PembelianServiceImpl implements PembelianService {
     @Transactional
     @Override
     public void deletePembelian(String idPembelian) {
-        pembelianRepository.delete(idPembelian);
+        //pembelianRepository.delete(idPembelian);
+        pembelianRepository.deletePembelian(idPembelian);
     }
 
     @Override
