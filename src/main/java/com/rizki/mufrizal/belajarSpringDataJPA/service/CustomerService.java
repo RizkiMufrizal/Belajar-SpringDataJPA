@@ -10,5 +10,6 @@ public interface CustomerService {
     void saveCustomer(Customer customer);
     void updateCustomer(Customer customer);
     Customer getCustomer(String idCustomer);
+    Customer findCustomerByEmail(String email);
     Page<Customer> findAllCustomer(Integer page, Integer jumlah);
 }
