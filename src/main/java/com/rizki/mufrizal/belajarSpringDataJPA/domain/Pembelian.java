@@ -1,6 +1,5 @@
 package com.rizki.mufrizal.belajarSpringDataJPA.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -30,10 +29,9 @@ public class Pembelian implements Serializable{
     @Column(name = "jumlahBarang")
     private Integer jumlahBarang;
 
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "tanggalPembelian")
-    private Date tanggalPembelian;
+    private Date tanggalPembelian = new Date();
 
     @Column(name = "totalHarga")
     private BigDecimal totalHarga;
