@@ -1,0 +1,24 @@
+<table class="table table-hover table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th class="text-center">Id Pembelian</th>
+      <th class="text-center">Total Harga</th>
+      <th class="text-center">Jumlah Barang</th>
+      <th class="text-center">Tanggal Pembelian</th>
+      <th class="text-center">Aksi</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="p in dataPembelian.content">
+    <tr>
+      <td class="text-center">{{p.idPembelian}}</td>
+      <td class="text-center">{{p.totalHarga}}</td>
+      <td class="text-center">{{p.jumlahBarang}}</td>
+      <td class="text-center">{{p.tanggalPembelian}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-danger" ng-click="deletePembelian(p.idPembelian)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
