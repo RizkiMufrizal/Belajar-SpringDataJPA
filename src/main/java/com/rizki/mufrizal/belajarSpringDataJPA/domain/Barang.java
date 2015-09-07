@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +37,9 @@ public class Barang implements Serializable{
 
     @Column(name = "jumlahBarang")
     private Integer jumlahBarang;
+
+    @Column(name = "hargaBarang")
+    private BigDecimal hargaBarang;
 
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
@@ -91,5 +95,13 @@ public class Barang implements Serializable{
 
     public void setJumlahBarang(Integer jumlahBarang) {
         this.jumlahBarang = jumlahBarang;
+    }
+
+    public BigDecimal getHargaBarang() {
+        return hargaBarang;
+    }
+
+    public void setHargaBarang(BigDecimal hargaBarang) {
+        this.hargaBarang = hargaBarang;
     }
 }
