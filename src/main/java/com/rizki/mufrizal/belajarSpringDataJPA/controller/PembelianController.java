@@ -78,7 +78,7 @@ public class PembelianController {
         }
 
         objectHashMap.put("Success", Boolean.TRUE);
-        objectHashMap.put("Info", "Data berhasil diedit");
+        objectHashMap.put("Info", "Data berhasil dihapus");
         return objectHashMap;
     }
 
